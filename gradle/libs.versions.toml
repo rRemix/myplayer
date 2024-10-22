@@ -1,7 +1,7 @@
 [versions]
 agp = "8.3.2"
-kotlin = "1.9.23"
-ksp = "1.9.23-1.0.19"
+kotlin = "2.0.21"
+ksp = "2.0.21-1.0.25"
 
 glide = "4.16.0"
 retrofit = "2.11.0"
@@ -14,7 +14,7 @@ kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
-
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 
 [libraries]
 # kotlin
@@ -28,6 +28,14 @@ media = { group = "androidx.media", name = "media", version = "1.7.0" }
 multidex = { group = "androidx.multidex", name = "multidex", version = "2.0.1" }
 palette-ktx = { group = "androidx.palette", name = "palette-ktx", version = "1.0.0" }
 swiperefreshlayout = { group = "androidx.swiperefreshlayout", name = "swiperefreshlayout", version = "1.1.0" }
+activity = { module = "androidx.activity:activity-compose", version = "1.9.2" }
+
+# compose
+compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-foundation = { module = "androidx.compose.foundation:foundation" }
+compose-ui = { module = "androidx.compose.ui:ui"}
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 
 # google
 billingclient = { group = "com.android.billingclient", name = "billing", version = "6.2.0" }

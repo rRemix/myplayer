@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.compose.compiler)
 }
 
 fun readProperties(file: File): Properties {
@@ -38,7 +39,7 @@ android {
 
     defaultConfig {
         applicationId = "remix.myplayer"
-        minSdk = 19
+        minSdk = 21
         targetSdk = 33
 
         versionCode = 16500
@@ -187,6 +188,7 @@ android {
     buildFeatures {
         buildConfig = true
         viewBinding = true
+        compose = true
     }
 
     dependenciesInfo {
@@ -196,6 +198,11 @@ android {
     room {
         schemaDirectory("$projectDir/schemas")
     }
+}
+
+composeCompiler {
+    reportsDestination = layout.buildDirectory.dir("compose_compiler")
+//    stabilityConfigurationFile = rootProject.layout.projectDirectory.file("stability_config.conf")
 }
 
 androidComponents {
@@ -222,6 +229,7 @@ dependencies {
     implementation(libs.multidex)
     implementation(libs.palette.ktx)
     implementation(libs.swiperefreshlayout)
+    implementation(libs.activity)
 
     implementation(libs.material)
 
@@ -263,6 +271,16 @@ dependencies {
 
     val googleImplementation by configurations
     googleImplementation(libs.billingclient)
+
+    val composeBom = platform("androidx.compose:compose-bom:2024.09.00")
+    implementation(composeBom)
+    androidTestImplementation(composeBom)
+
+    implementation(libs.compose.material3)
+    implementation(libs.compose.foundation)
+    implementation(libs.compose.ui)
+    implementation(libs.compose.ui.tooling)
+    implementation(libs.compose.ui.tooling.preview)
 }
 
 // 上传mapping文件

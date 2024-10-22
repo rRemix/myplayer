@@ -1,9 +1,15 @@
 package remix.myplayer.ui.activity.base
 
-import android.content.*
-import android.os.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.MainScope
+import android.content.BroadcastReceiver
+import android.content.ComponentName
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.content.ServiceConnection
+import android.os.Bundle
+import android.os.Handler
+import android.os.IBinder
+import android.os.Message
 import kotlinx.coroutines.cancel
 import remix.myplayer.bean.mp3.Song
 import remix.myplayer.helper.MusicEventCallback
@@ -14,7 +20,6 @@ import remix.myplayer.util.Util.registerLocalReceiver
 import remix.myplayer.util.Util.unregisterLocalReceiver
 import timber.log.Timber
 import java.lang.ref.WeakReference
-import java.util.*
 
 open class BaseMusicActivity : BaseActivity(), MusicEventCallback {
   private var serviceToken: MusicServiceRemote.ServiceToken? = null
@@ -45,7 +50,7 @@ open class BaseMusicActivity : BaseActivity(), MusicEventCallback {
     Timber.tag(TAG).v("onRestart")
   }
 
-  override fun onNewIntent(intent: Intent?) {
+  override fun onNewIntent(intent: Intent) {
     super.onNewIntent(intent)
     setIntent(intent)
     hasNewIntent = true

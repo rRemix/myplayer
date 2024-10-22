@@ -24,7 +24,12 @@ import remix.myplayer.theme.ThemeStore.sColoredNavigation
 import remix.myplayer.theme.ThemeStore.statusBarColor
 import remix.myplayer.theme.ThemeStore.themeRes
 import remix.myplayer.ui.misc.AudioTag
-import remix.myplayer.util.*
+import remix.myplayer.util.ColorUtil
+import remix.myplayer.util.MediaStoreUtil
+import remix.myplayer.util.PermissionUtil
+import remix.myplayer.util.StatusBarUtil
+import remix.myplayer.util.ToastUtil
+import remix.myplayer.util.Util
 import timber.log.Timber
 
 /**
@@ -94,7 +99,7 @@ open class BaseActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     setStatusBarMode()
   }
 
-  override fun setContentView(view: View) {
+  override fun setContentView(view: View?) {
     super.setContentView(view)
     setStatusBarColor()
     setStatusBarMode()
